@@ -2,6 +2,7 @@ package com.jnshu.sildenafil.system.controller;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.jnshu.sildenafil.common.domain.ResponseBo;
+import com.jnshu.sildenafil.common.exception.ParamIsNullException;
 import com.jnshu.sildenafil.system.domain.Module;
 import com.jnshu.sildenafil.system.domain.Role;
 import com.jnshu.sildenafil.system.domain.RoleModule;
@@ -57,11 +58,12 @@ public class ModuleController {
         Module module =new Module();
         try {
             module =moduleService.getModuleByModuleId(moduleId);
-        }catch (Exception e){
+        }
+        catch (Exception e){
             ResponseBo.error("异常处理").put("code",-999);
         }
         if(module!=null){
-
+            log.info("请求成功");
             return ResponseBo.ok("请求成功").put("module",module);
         }
         log.error("结果为空");
