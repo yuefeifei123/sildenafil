@@ -10,6 +10,7 @@ import com.jnshu.sildenafil.system.service.RoleModuleService;
 import com.jnshu.sildenafil.system.service.RoleService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
@@ -49,10 +50,16 @@ public class ModuleController {
      * @return 单个模块对象
      */
 //    @PreAuthorize("hasAuthority('module:list')")
+    @ResponseStatus(value = HttpStatus.CONFLICT, reason = "这是一个测试的状态码")
     @GetMapping(value = "/a/u/admin/module")
-    public ResponseBo getModule(Long moduleId) throws Exception{
+    public ResponseBo getModule(Long moduleId) {
         log.debug("args for getModule: moduleId=[{}]",moduleId);
-        Module module =moduleService.getModuleByModuleId(moduleId);
+        Module module =new Module();
+        try {
+            module =moduleService.getModuleByModuleId(moduleId);
+        }catch (Exception e){
+            ResponseBo.error("异常处理").put("code",-999);
+        }
         if(module!=null){
 
             return ResponseBo.ok("请求成功").put("module",module);
