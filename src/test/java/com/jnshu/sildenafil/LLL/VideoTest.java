@@ -139,7 +139,7 @@ public class VideoTest {
     }
 
     @Test
-    public void testGetVideoPage() {
+    public void testGetVideoPage() throws Exception{
 
         IPage aaaa = videoService
                 .getPage(1,5, null, null, null, null,

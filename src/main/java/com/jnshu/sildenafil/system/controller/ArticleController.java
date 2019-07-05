@@ -37,7 +37,7 @@ public class ArticleController {
      * @return 文章list和分页信息
      */
     @ResponseBody
-    @PreAuthorize("hasAuthority('artilce:list')")
+//    @PreAuthorize("hasAuthority('artilce:list')")
     @GetMapping(value = "/a/u/admin/article/list")
     public ResponseBo getArticleList(Integer page, Integer size,String title,String author,
                                   Integer type,Integer status,Integer likeStart,Integer likeEnd,
@@ -59,9 +59,10 @@ public class ArticleController {
      * @return 文章内容
      */
     @ResponseBody
-    @PreAuthorize("hasAuthority('artilce:list')")
+//    @PreAuthorize("hasAuthority('artilce:list')")
     @GetMapping(value = "/a/u/admin/article")
     public ResponseBo getArticleByArticleId(Long articleId){
+//        throw new Exception();
         log.info("args for getArticleByArticleId : articleId={}",articleId);
         //真数据
         Article article=articleService.getArticleById(articleId);
@@ -77,7 +78,7 @@ public class ArticleController {
      * @return 状态
      */
     @ResponseBody
-    @PreAuthorize("hasAuthority('artilce:save')")
+//    @PreAuthorize("hasAuthority('artilce:save')")
     @PostMapping(value = "/a/u/admin/article")
     public ResponseBo saveArticle(Article article) {
         log.info("args for saveArticle is:*** article=[{}] ***"
@@ -94,7 +95,7 @@ public class ArticleController {
      * @return 成功后返回修改的记录的id
      */
     @ResponseBody
-    @PreAuthorize("hasAuthority('artilce:update')")
+//    @PreAuthorize("hasAuthority('artilce:update')")
     @PutMapping(value = "/a/u/admin/article")
     public ResponseBo updateArticleById(Article article) {
         log.info("args for updateArticleById is:*** article=[{}] ***"
@@ -113,7 +114,7 @@ public class ArticleController {
      * @return 成功后返回修改的记录的id
      */
     @ResponseBody
-    @PreAuthorize("hasAuthority('artilce:list')")
+//    @PreAuthorize("hasAuthority('artilce:list')")
     @PutMapping(value = "/a/u/admin/article/status")
     public ResponseBo updateArticleStatus(Long articleId,Integer type,Integer status) {
         log.info("args for updateArticleStatus: articleId=[{}]&type=[{}]&status=[{}]",articleId,type,status);

@@ -4,9 +4,11 @@ import com.jnshu.sildenafil.common.domain.ResponseBo;
 import com.jnshu.sildenafil.common.exception.ParamIsNullException;
 import com.jnshu.sildenafil.common.exception.ServiceException;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.ResponseStatus;
 
 import javax.naming.AuthenticationException;
 import javax.servlet.http.HttpServletRequest;
@@ -50,6 +52,7 @@ public class GlobalExceptionHandler {
         return responseBo;
     }
 
+
     @ExceptionHandler(ServiceException.class)
     @ResponseBody
     public ResponseBo serviceException(HttpServletRequest request, ServiceException se){
@@ -60,7 +63,7 @@ public class GlobalExceptionHandler {
         return responseBo;
     }
 
-
+//    @ResponseStatus(value = HttpStatus.BAD_GATEWAY, reason = "这是一个测试的状态码")
     @ExceptionHandler(Exception.class)
     @ResponseBody
     public ResponseBo errorHandler(HttpServletRequest request, Exception e)  {

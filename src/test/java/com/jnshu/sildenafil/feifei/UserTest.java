@@ -14,6 +14,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.util.HashMap;
+import java.util.Map;
+
 @Slf4j
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -55,5 +58,12 @@ public class UserTest {
         queryWrapper.eq("user_name",username);
         User user = userDao.selectOne(queryWrapper);
         System.out.println(user);
+    }
+    @Test
+    public void ttttest() {
+        Map<String,Object> map=new HashMap<>();
+        map.put("str",null);
+        map.put("str1","");
+        System.out.println(map);
     }
 }

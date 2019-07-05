@@ -5,7 +5,6 @@ import com.jnshu.sildenafil.common.domain.ResponseBo;
 import com.jnshu.sildenafil.common.exception.ServiceException;
 import com.jnshu.sildenafil.system.domain.Role;
 import com.jnshu.sildenafil.system.domain.User;
-import com.jnshu.sildenafil.system.mapper.RoleDao;
 import com.jnshu.sildenafil.system.service.RoleService;
 import com.jnshu.sildenafil.system.service.UserService;
 import lombok.extern.slf4j.Slf4j;
@@ -14,7 +13,6 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 /**
  * @author feifei
